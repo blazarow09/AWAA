@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.572
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityTutorialWebAPI", "IdentityTutorialWebAPI\IdentityTutorialWebAPI.csproj", "{6CE2DD95-A724-42D0-B748-7516EA5D6179}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{564F702C-F711-442D-9287-EBEECDBBEC9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6CE2DD95-A724-42D0-B748-7516EA5D6179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CE2DD95-A724-42D0-B748-7516EA5D6179}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6CE2DD95-A724-42D0-B748-7516EA5D6179}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6CE2DD95-A724-42D0-B748-7516EA5D6179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{564F702C-F711-442D-9287-EBEECDBBEC9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{564F702C-F711-442D-9287-EBEECDBBEC9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{564F702C-F711-442D-9287-EBEECDBBEC9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{564F702C-F711-442D-9287-EBEECDBBEC9E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {984077E5-1DD5-4E08-B8E1-03DE6F508049}
+		SolutionGuid = {45CD7C53-1BD3-490D-A3C2-E0D411804DB9}
 	EndGlobalSection
 EndGlobal
