@@ -31,6 +31,7 @@ namespace WebAPI
                 options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<AuthenticationDbContext>();
 
             services.Configure<IdentityOptions>(options =>

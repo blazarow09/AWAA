@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +26,9 @@ namespace WebAPI.Controllers
 
         [HttpPost]
         [Route("Register")]
-        public async Task<IActionResult> Register(ApplicationUserRegisterModel model)
+        public async Task<IActionResult> Register(ApplicationUserModel model)
         {
+            model.Role = "Admin";
             var applicationUser = new ApplicationUser()
             {
                 UserName = model.Username,
@@ -38,6 +40,7 @@ namespace WebAPI.Controllers
             {
                 var result = await this.userManager.CreateAsync(applicationUser, model.Password);
 
+                await this.userManager.AddToRoleAsync(applicationUser, model.Role);
                 return Ok(result);
             }
             catch (Exception ex)
@@ -52,13 +55,18 @@ namespace WebAPI.Controllers
         {
             var user = await this.userManager.FindByNameAsync(model.UserName);
 
+            IdentityOptions options = new IdentityOptions();
+
             if (user != null && await this.userManager.CheckPasswordAsync(user, model.Password))
             {
+                var role = await this.userManager.GetRolesAsync(user);
+
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                        new Claim("UserID", user.Id.ToString())
+                        new Claim("UserID", user.Id.ToString()),
+                        new Claim(options.ClaimsIdentity.RoleClaimType, role.FirstOrDefault())
                     }),
                     Expires = DateTime.UtcNow.AddDays(1),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("1234567890123456")), SecurityAlgorithms.HmacSha256Signature)
